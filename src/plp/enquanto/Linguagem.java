@@ -220,6 +220,28 @@ interface Linguagem {
 		}
 	}
 
+	class ExpDiv extends OpBin<Expressao> implements Expressao{
+		ExpDiv(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public int getValor() {
+			return esq.getValor() / dir.getValor();
+		}
+	}
+
+	class ExpExpon extends OpBin<Expressao> implements Expressao{
+		ExpExpon(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public int getValor(){
+			return (int)Math.pow(esq.getValor(), dir.getValor());
+		}
+	}
+
 	class Booleano implements Bool {
 		private final boolean valor;
 
@@ -255,6 +277,50 @@ interface Linguagem {
 		}
 	}
 
+	class ExpMaiorIgual extends OpBin<Expressao> implements Bool{
+		ExpMaiorIgual(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return esq.getValor() >= dir.getValor();
+		}
+	}
+
+	class ExpMenor extends OpBin<Expressao> implements Bool{
+		ExpMenor(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return esq.getValor() < dir.getValor();
+		}
+	}
+
+	class ExpMaior extends OpBin<Expressao> implements Bool{
+		ExpMaior(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return esq.getValor() > dir.getValor();
+		}
+	}
+
+	class ExpDiff extends OpBin<Expressao> implements Bool{
+		ExpDiff(Expressao esq, Expressao dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return esq.getValor() != dir.getValor();
+		}
+	}
+
 	class NaoLogico extends OpUnaria<Bool> implements Bool{
 		NaoLogico(Bool operando) {
 			super(operando);
@@ -276,4 +342,27 @@ interface Linguagem {
 			return esq.getValor() && dir.getValor();
 		}
 	}
+
+	class OuLogico extends OpBin<Bool> implements Bool{
+		OuLogico(Bool esq, Bool dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return esq.getValor() || dir.getValor();
+		}
+	}
+
+	class XorLogico extends OpBin<Bool> implements Bool{
+		XorLogico(Bool esq, Bool dir){
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor(){
+			return (!esq.getValor() && dir.getValor()) || (esq.getValor() && !dir.getValor());
+		}
+	}
+
 }

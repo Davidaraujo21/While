@@ -16,7 +16,8 @@ comando: ID ':=' expressao                               # atribuicao
 expressao: INT                                           # inteiro
          | 'leia'                                        # leia
          | ID                                            # id
-         | expressao '*' expressao                       # opBin
+         | expressao ('^') expressao                     # opBin
+         | expressao ('*' | '/') expressao               # opBin
          | expressao ('+' | '-') expressao               # opBin
          | '(' expressao ')'                             # expPar
          ;
@@ -24,11 +25,17 @@ expressao: INT                                           # inteiro
 booleano: BOOLEANO                                       # bool
         | expressao '=' expressao                        # opRel
         | expressao '<=' expressao                       # opRel
+        | expressao '>=' expressao                       # opRel
+        | expressao '<' expressao                        # opRel
+        | expressao '>' expressao                        # opRel
+        | expressao '!=' expressao                       # opRel
         | 'nao' booleano                                 # naoLogico
         | booleano 'e' booleano                          # eLogico
+        | booleano 'ou' booleano                         # ouLogico
+        | booleano 'xor' booleano                        # xorLogico
         | '(' booleano ')'                               # boolPar
         ;
-
+        
 
 BOOLEANO: 'verdadeiro' | 'falso';
 INT: ('0'..'9')+ ;

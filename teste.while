@@ -1,3 +1,8 @@
-a := 10;
-escreva a;
-exiba "as"
+a := 3;
+b := 10;
+
+se a=2 xor b=10 entao
+    exiba "Entrou no xor"
+senao
+    exiba "Nao entrou no xor"
+

@@ -101,7 +101,9 @@ public class Regras extends EnquantoBaseListener {
 		final Expressao dir = valores.pegue(ctx.expressao(1));
 		final String op = ctx.getChild(1).getText();
 		final Expressao exp = switch (op) {
+			case "^" -> new ExpExpon(esq, dir);
 			case "*" -> new ExpMult(esq, dir);
+			case "/" -> new ExpDiv(esq, dir);
 			case "-" -> new ExpSub(esq, dir);
 			default  -> new ExpSoma(esq, dir);
 		};
@@ -120,6 +122,20 @@ public class Regras extends EnquantoBaseListener {
 		final Bool esq = valores.pegue(ctx.booleano(0));
 		final Bool dir = valores.pegue(ctx.booleano(1));
 		valores.insira(ctx, new ELogico(esq, dir));
+	}
+
+	@Override
+	public void exitOuLogico(OuLogicoContext ctx){
+		final Bool esq = valores.pegue(ctx.booleano(0));
+		final Bool dir = valores.pegue(ctx.booleano(1));
+		valores.insira(ctx, new OuLogico(esq, dir));
+	}
+
+	@Override
+	public void exitXorLogico(XorLogicoContext ctx){
+		final Bool esq = valores.pegue(ctx.booleano(0));
+		final Bool dir = valores.pegue(ctx.booleano(1));
+		valores.insira(ctx, new XorLogico(esq, dir));
 	}
 
 	@Override
@@ -155,6 +171,10 @@ public class Regras extends EnquantoBaseListener {
 		final Bool exp = switch (op) {
 			case "="  -> new ExpIgual(esq, dir);
 			case "<=" -> new ExpMenorIgual(esq, dir);
+			case ">=" -> new ExpMaiorIgual(esq, dir);
+			case "<"  -> new ExpMenor(esq, dir);
+			case ">"  -> new ExpMaior(esq, dir);
+			case "!=" -> new ExpDiff(esq, dir);
 			default   -> new ExpIgual(esq, esq);
 		};
 		valores.insira(ctx, exp);
