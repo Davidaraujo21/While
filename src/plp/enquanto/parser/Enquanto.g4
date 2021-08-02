@@ -11,6 +11,7 @@ comando: ID ':=' expressao                               # atribuicao
        | 'exiba' TEXTO                                   # exiba
        | 'escreva' expressao                             # escreva
        | '{' seqComando '}'                              # bloco
+       | 'repita' expressao 'vezes' comando              # repita
        ;
 
 expressao: INT                                           # inteiro
@@ -35,7 +36,7 @@ booleano: BOOLEANO                                       # bool
         | booleano 'xor' booleano                        # xorLogico
         | '(' booleano ')'                               # boolPar
         ;
-        
+
 
 BOOLEANO: 'verdadeiro' | 'falso';
 INT: ('0'..'9')+ ;

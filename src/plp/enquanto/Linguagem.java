@@ -54,6 +54,24 @@ interface Linguagem {
 		}
 	}
 
+	class Repita implements Comando{
+		private final Expressao exp;
+		private final Comando comando;
+
+		public Repita(Expressao exp, Comando comando){
+			this.exp = exp;
+			this.comando = comando;
+		}
+
+		@Override
+		public void execute(){
+			for(int i = 0; i < exp.getValor(); i++){
+				comando.execute();
+			}
+		}
+
+	}
+
 	Skip skip = new Skip();
 	class Skip implements Comando {
 		@Override
