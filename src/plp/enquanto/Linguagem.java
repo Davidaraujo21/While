@@ -87,7 +87,10 @@ interface Linguagem {
 
 		@Override
 		public void execute(){
-			
+			for(int i = exp1.getValor(); i < exp2.getValor(); i++){
+				ambiente.put(id, i);
+				comando.execute();
+			}
 		}
 	}
 
