@@ -1,3 +1,9 @@
-repita 10 vezes 
-    exiba "funciona"
+a := 5;
+
+se a=2 entao
+    exiba "É igual a 2"
+senaose a>2 entao
+    exiba "É maior que 2"
+senao 
+    exiba "É menor que 2"
 

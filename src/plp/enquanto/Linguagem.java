@@ -35,24 +35,50 @@ interface Linguagem {
 	}
 
 	class Se implements Comando {
-		private final Bool condicao;
-		private final Comando entao;
-		private final Comando senao;
+		// private final Bool condicao;
+		// private final Comando entao;
+		// private final Bool condicao2;
+		// private final Comando senaose;
+		// private final Comando senao;
 
-		public Se(Bool condicao, Comando entao, Comando senao) {
-			this.condicao = condicao;
-			this.entao = entao;
-			this.senao = senao;
+		private final List<Comando> comandos;
+		private final List<Bool> condicoes;
+
+		// public Se() {
+		// 	// this.condicao = condicao;
+		// 	// this.entao = entao;
+		// 	// this.condicao2 = condicao2;
+		// 	// this.senaose = senaose;
+		// 	// this.senao = senao;
+		// }
+		
+		public Se(List<Bool> condicoes, List<Comando> comandos) {
+			this.condicoes = condicoes;
+			this.comandos = comandos;
 		}
+
 
 		@Override
 		public void execute() {
-			if (condicao.getValor())
-				entao.execute();
-			else
-				senao.execute();
+
+			if(){
+				
+			}
+			// if (condicao.getValor()){
+			// 	entao.execute();
+			// }else if(this.condicao2 != null && condicao2.getValor()){
+			// 	senaose.execute();
+			// }else{
+			// 	if(this.condicao2 != null){
+			// 		senao.execute();
+			// 	}else{
+			// 		senaose.execute();
+			// 	}
+			// }
 		}
 	}
+
+
 
 	class Repita implements Comando{
 		private final Expressao exp;
