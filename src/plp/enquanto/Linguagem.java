@@ -41,41 +41,41 @@ interface Linguagem {
 		// private final Comando senaose;
 		// private final Comando senao;
 
-		private final List<Comando> comandos;
-		private final List<Bool> condicoes;
+		// private final List<Comando> comandos;
+		// private final List<Bool> condicoes;
 
-		// public Se() {
-		// 	// this.condicao = condicao;
-		// 	// this.entao = entao;
-		// 	// this.condicao2 = condicao2;
-		// 	// this.senaose = senaose;
-		// 	// this.senao = senao;
-		// }
+		// // public Se() {
+		// // 	// this.condicao = condicao;
+		// // 	// this.entao = entao;
+		// // 	// this.condicao2 = condicao2;
+		// // 	// this.senaose = senaose;
+		// // 	// this.senao = senao;
+		// // }
 		
-		public Se(List<Bool> condicoes, List<Comando> comandos) {
-			this.condicoes = condicoes;
-			this.comandos = comandos;
-		}
+		// public Se(List<Bool> condicoes, List<Comando> comandos) {
+		// 	this.condicoes = condicoes;
+		// 	this.comandos = comandos;
+		// }
 
 
-		@Override
-		public void execute() {
+		// @Override
+		// public void execute() {
 
-			if(){
-				
-			}
-			// if (condicao.getValor()){
-			// 	entao.execute();
-			// }else if(this.condicao2 != null && condicao2.getValor()){
-			// 	senaose.execute();
-			// }else{
-			// 	if(this.condicao2 != null){
-			// 		senao.execute();
-			// 	}else{
-			// 		senaose.execute();
-			// 	}
-			// }
-		}
+		// 	if(){
+
+		// 	}
+		// 	// if (condicao.getValor()){
+		// 	// 	entao.execute();
+		// 	// }else if(this.condicao2 != null && condicao2.getValor()){
+		// 	// 	senaose.execute();
+		// 	// }else{
+		// 	// 	if(this.condicao2 != null){
+		// 	// 		senao.execute();
+		// 	// 	}else{
+		// 	// 		senaose.execute();
+		// 	// 	}
+		// 	// }
+		// }
 	}
 
 
@@ -183,17 +183,19 @@ interface Linguagem {
 	}
 
 	class Atribuicao implements Comando {
-		private final String id;
-		private final Expressao exp;
+		private final List<String> ids = new ArrayList<>();
+		private final List<Expressao> exps = new ArrayList<>();
 
-		Atribuicao(String id, Expressao exp) {
-			this.id = id;
-			this.exp = exp;
+		Atribuicao(List<String> ids, List<Expressao> exps) {
+			this.ids = ids;
+			this.exps = exps;
 		}
 
 		@Override
 		public void execute() {
-			ambiente.put(id, exp.getValor());
+			for(int i = 0; i < ids.size(); i++){
+				ambiente.put(ids.get(i), exps.get(i).getValor());
+			}
 		}
 	}
 

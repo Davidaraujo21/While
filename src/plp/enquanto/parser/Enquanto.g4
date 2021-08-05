@@ -4,7 +4,7 @@ programa : seqComando;     // sequência de comandos
 
 seqComando: comando (';' comando)* ;
 
-comando: ID ':=' expressao                               # atribuicao
+comando: ID (',' ID)* ':=' expressao (',' expressao)*                              # atribuicao
        | 'skip'                                          # skip
        | 'se' booleano 'entao' comando ('senaose' booleano 'entao' comando)* 'senao' comando   # se
        | 'enquanto' booleano 'faca' comando              # enquanto
