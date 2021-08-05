@@ -65,7 +65,7 @@ interface Linguagem {
 
 		@Override
 		public void execute(){
-			for(int i = 0; i < exp.getValor(); i++){
+			for(int i = 1; i < exp.getValor(); i++){
 				comando.execute();
 			}
 		}
