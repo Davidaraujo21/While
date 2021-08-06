@@ -1,4 +1,4 @@
-x, a := 5, 2;
+x, a := 5, 23;
 
 quando a
     1 : exiba "um"
