@@ -145,6 +145,32 @@ interface Linguagem {
 		}
 	}
 
+	class Quando implements Comando{
+		
+		private List<Expressao> expressoes = new ArrayList<>();
+		private List<Comando> comandos = new ArrayList<>();
+
+		public Quando(List<Expressao> expressoes, List<Comando> comandos) {
+			this.expressoes = expressoes;
+			this.comandos = comandos;
+		}
+
+		@Override
+		public void execute(){
+			for(int i = 0; i < comandos.size(); i++){
+				if(expressoes.get(0).getValor() == expressoes.get(i + 1).getValor()){
+					comandos.get(i).execute();
+					return;
+				}
+			}
+			
+			if(expressoes.get(expressoes.size() - 1).getValor() == 0){
+				comandos.get(comandos.size() - 1).execute();
+			}
+		}
+
+	}
+
 	class Exiba implements Comando {
 		private final String texto;
 

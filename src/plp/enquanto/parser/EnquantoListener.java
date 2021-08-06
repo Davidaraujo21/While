@@ -112,6 +112,18 @@ public interface EnquantoListener extends ParseTreeListener {
 	 */
 	void exitBloco(EnquantoParser.BlocoContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code quando}
+	 * labeled alternative in {@link EnquantoParser#comando}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuando(EnquantoParser.QuandoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code quando}
+	 * labeled alternative in {@link EnquantoParser#comando}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuando(EnquantoParser.QuandoContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code repita}
 	 * labeled alternative in {@link EnquantoParser#comando}.
 	 * @param ctx the parse tree

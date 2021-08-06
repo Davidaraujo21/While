@@ -11,6 +11,7 @@ comando: ID (',' ID)* ':=' expressao (',' expressao)*                           
        | 'exiba' TEXTO                                                                         # exiba
        | 'escreva' expressao                                                                   # escreva
        | '{' seqComando '}'                                                                    # bloco
+       | 'quando' expressao (expressao ':' comando)*                                           # quando
        | 'repita' expressao 'vezes' comando                                                    # repita
        | 'para' ID 'em' expressao 'ate' expressao 'faca' comando                               # para
        ;
@@ -41,7 +42,7 @@ booleano: BOOLEANO                                       # bool
 
 BOOLEANO: 'verdadeiro' | 'falso';
 INT: ('0'..'9')+ ;
-ID: ('a'..'z')+;
+ID: ('a'..'z')+ | '_';
 TEXTO: '"' .*? '"';
 
 Comentario: '#' .*? '\n' -> skip;

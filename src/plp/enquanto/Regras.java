@@ -53,6 +53,23 @@ public class Regras extends EnquantoBaseListener {
 	}
 
 	@Override
+	public void exitQuando(QuandoContext ctx){
+		final List<Expressao> expressoes = new ArrayList<>();
+		final List<Comando> comandos = new ArrayList<>();
+
+		for(ExpressaoContext c: ctx.expressao()){
+			expressoes.add(valores.pegue(c));
+		}
+
+		for(ComandoContext c: ctx.comando()){
+			comandos.add(valores.pegue(c));
+		}
+
+		valores.insira(ctx, new Quando(expressoes, comandos));
+
+	}
+
+	@Override
 	public void exitRepita(RepitaContext ctx){
 		final Expressao exp = valores.pegue(ctx.expressao());
 		final Comando comando = valores.pegue(ctx.comando());
@@ -191,12 +208,8 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitExiba(ExibaContext ctx) {
-		// final Expressao exp = valores.pegue(ctx.expressao())
 		final String t = ctx.TEXTO().getText();
 		final String texto = t.substring(1, t.length() - 1);
-		// if(exp != null){
-		// 	valores.insira(ctx, new Exiba(exp));
-		// }
 		valores.insira(ctx, new Exiba(texto));
 	}
 

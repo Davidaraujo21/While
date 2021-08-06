@@ -124,6 +124,18 @@ public class EnquantoBaseListener implements EnquantoListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterQuando(EnquantoParser.QuandoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQuando(EnquantoParser.QuandoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterRepita(EnquantoParser.RepitaContext ctx) { }
 	/**
 	 * {@inheritDoc}
