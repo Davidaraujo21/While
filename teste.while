@@ -1,6 +1,6 @@
-x := 20;
+x, a := 5, 2;
 
-quando x
+quando a
     1 : exiba "um"
     2 : exiba "dois"
     3 : exiba "três"
