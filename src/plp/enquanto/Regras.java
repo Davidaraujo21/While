@@ -112,8 +112,16 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitAtribuicao(AtribuicaoContext ctx) {
-		final List<String> ids = ctx.ID().getText();
-		final List<Expressao> exps = valores.pegue(ctx.expressao());
+		final List<String> ids = new ArrayList<>();
+		final List<Expressao> exps = new ArrayList<>();
+		int i = 0;
+
+		for (ExpressaoContext c : ctx.expressao()) {
+			exps.add(valores.pegue(c));
+			ids.add(ctx.ID(i).getText());
+			i++;
+		}
+
 		// final String id = ctx.ID().getText();
 		// final Expressao exp = valores.pegue(ctx.expressao());
 		valores.insira(ctx, new Atribuicao(ids, exps));
@@ -188,8 +196,12 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitExiba(ExibaContext ctx) {
+		// final Expressao exp = valores.pegue(ctx.expressao())
 		final String t = ctx.TEXTO().getText();
 		final String texto = t.substring(1, t.length() - 1);
+		// if(exp != null){
+		// 	valores.insira(ctx, new Exiba(exp));
+		// }
 		valores.insira(ctx, new Exiba(texto));
 	}
 

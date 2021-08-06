@@ -4,15 +4,15 @@ programa : seqComando;     // sequência de comandos
 
 seqComando: comando (';' comando)* ;
 
-comando: ID (',' ID)* ':=' expressao (',' expressao)*                              # atribuicao
-       | 'skip'                                          # skip
+comando: ID (',' ID)* ':=' expressao (',' expressao)*                                          # atribuicao
+       | 'skip'                                                                                # skip
        | 'se' booleano 'entao' comando ('senaose' booleano 'entao' comando)* 'senao' comando   # se
-       | 'enquanto' booleano 'faca' comando              # enquanto
-       | 'exiba' TEXTO                                   # exiba
-       | 'escreva' expressao                             # escreva
-       | '{' seqComando '}'                              # bloco
-       | 'repita' expressao 'vezes' comando              # repita
-       | 'para' ID 'em' expressao 'ate' expressao 'faca' comando # para
+       | 'enquanto' booleano 'faca' comando                                                    # enquanto
+       | 'exiba' TEXTO                                                                         # exiba
+       | 'escreva' expressao                                                                   # escreva
+       | '{' seqComando '}'                                                                    # bloco
+       | 'repita' expressao 'vezes' comando                                                    # repita
+       | 'para' ID 'em' expressao 'ate' expressao 'faca' comando                               # para
        ;
 
 expressao: INT                                           # inteiro

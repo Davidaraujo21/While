@@ -1,5 +1,7 @@
 package plp.enquanto;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,49 +36,49 @@ interface Linguagem {
 		}
 	}
 
-	class Se implements Comando {
-		// private final Bool condicao;
-		// private final Comando entao;
-		// private final Bool condicao2;
-		// private final Comando senaose;
-		// private final Comando senao;
+	// class Se implements Comando {
+	// 	// private final Bool condicao;
+	// 	// private final Comando entao;
+	// 	// private final Bool condicao2;
+	// 	// private final Comando senaose;
+	// 	// private final Comando senao;
 
-		// private final List<Comando> comandos;
-		// private final List<Bool> condicoes;
+	// 	// private final List<Comando> comandos;
+	// 	// private final List<Bool> condicoes;
 
-		// // public Se() {
-		// // 	// this.condicao = condicao;
-		// // 	// this.entao = entao;
-		// // 	// this.condicao2 = condicao2;
-		// // 	// this.senaose = senaose;
-		// // 	// this.senao = senao;
-		// // }
+	// 	// // public Se() {
+	// 	// // 	// this.condicao = condicao;
+	// 	// // 	// this.entao = entao;
+	// 	// // 	// this.condicao2 = condicao2;
+	// 	// // 	// this.senaose = senaose;
+	// 	// // 	// this.senao = senao;
+	// 	// // }
 		
-		// public Se(List<Bool> condicoes, List<Comando> comandos) {
-		// 	this.condicoes = condicoes;
-		// 	this.comandos = comandos;
-		// }
+	// 	// public Se(List<Bool> condicoes, List<Comando> comandos) {
+	// 	// 	this.condicoes = condicoes;
+	// 	// 	this.comandos = comandos;
+	// 	// }
 
 
-		// @Override
-		// public void execute() {
+	// 	// @Override
+	// 	// public void execute() {
 
-		// 	if(){
+	// 	// 	if(){
 
-		// 	}
-		// 	// if (condicao.getValor()){
-		// 	// 	entao.execute();
-		// 	// }else if(this.condicao2 != null && condicao2.getValor()){
-		// 	// 	senaose.execute();
-		// 	// }else{
-		// 	// 	if(this.condicao2 != null){
-		// 	// 		senao.execute();
-		// 	// 	}else{
-		// 	// 		senaose.execute();
-		// 	// 	}
-		// 	// }
-		// }
-	}
+	// 	// 	}
+	// 	// 	// if (condicao.getValor()){
+	// 	// 	// 	entao.execute();
+	// 	// 	// }else if(this.condicao2 != null && condicao2.getValor()){
+	// 	// 	// 	senaose.execute();
+	// 	// 	// }else{
+	// 	// 	// 	if(this.condicao2 != null){
+	// 	// 	// 		senao.execute();
+	// 	// 	// 	}else{
+	// 	// 	// 		senaose.execute();
+	// 	// 	// 	}
+	// 	// 	// }
+	// 	// }
+	// }
 
 
 
@@ -183,8 +185,8 @@ interface Linguagem {
 	}
 
 	class Atribuicao implements Comando {
-		private final List<String> ids = new ArrayList<>();
-		private final List<Expressao> exps = new ArrayList<>();
+		private List<String> ids = new ArrayList<>();
+		private List<Expressao> exps = new ArrayList<>();
 
 		Atribuicao(List<String> ids, List<Expressao> exps) {
 			this.ids = ids;
