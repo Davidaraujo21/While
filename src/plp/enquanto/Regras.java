@@ -38,22 +38,18 @@ public class Regras extends EnquantoBaseListener {
 
 	@Override
 	public void exitSe(SeContext ctx) {
-		// final Bool condicao = valores.pegue(ctx.booleano(0));
-		// final Comando entao = valores.pegue(ctx.comando(0));
-		// final Bool condicao2 = valores.pegue(ctx.booleano(1));
-		// final Comando entao2 = valores.pegue(ctx.comando(1));
-		// final Comando senao = valores.pegue(ctx.comando(2));
+		final List<Bool> condicoes = new ArrayList<>();
+		final List<Comando> comandos = new ArrayList<>(); 
 
-		// final List<Bool> condicoes = new ArrayList<>();
-		// final List<Comando> comandos = new ArrayList<>();
-		// for (ComandoContext c : ctx.comando()) {
-		// 	comandos.add(valores.pegue(c));
-		// }
-		// for (Bool b: ctx.booleano()){
-		// 	condicao.add(valores.pegue(b))
-		// }
+		for(BooleanoContext c: ctx.booleano()){
+			condicoes.add(valores.pegue(c));
+		}
 
-		// valores.insira(ctx, new Se(condicoes, comandos));
+		for(ComandoContext c: ctx.comando()){
+			comandos.add(valores.pegue(c));
+		}
+
+		valores.insira(ctx, new Se(condicoes, comandos));
 	}
 
 	@Override
@@ -122,8 +118,6 @@ public class Regras extends EnquantoBaseListener {
 			i++;
 		}
 
-		// final String id = ctx.ID().getText();
-		// final Expressao exp = valores.pegue(ctx.expressao());
 		valores.insira(ctx, new Atribuicao(ids, exps));
 	}
 
@@ -154,6 +148,7 @@ public class Regras extends EnquantoBaseListener {
 		final Comando comando = valores.pegue(ctx.comando());
 		valores.insira(ctx, new Enquanto(condicao, comando));
 	}
+
 
 	@Override
 	public void exitELogico(ELogicoContext ctx) {

@@ -1,3 +1,10 @@
-a, b, c := 1, 2, 3;
+a := 20;
 
-escreva c;
+se a=1 entao
+    exiba "Igual a 1"
+senaose a=2 entao
+    exiba "É igual a 2"
+senaose a=3 entao
+    exiba "É igual a 3"
+senao
+    exiba "Não sei que número é esse"

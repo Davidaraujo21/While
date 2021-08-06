@@ -32,55 +32,42 @@ interface Linguagem {
 			this.comandos = comandos;
 		}
 		public void execute() {
-			comandos.forEach(Comando::execute);
+			try {
+				comandos.forEach(Comando::execute);
+			}
+			catch(NullPointerException e) {}	
 		}
 	}
 
-	// class Se implements Comando {
-	// 	// private final Bool condicao;
-	// 	// private final Comando entao;
-	// 	// private final Bool condicao2;
-	// 	// private final Comando senaose;
-	// 	// private final Comando senao;
-
-	// 	// private final List<Comando> comandos;
-	// 	// private final List<Bool> condicoes;
-
-	// 	// // public Se() {
-	// 	// // 	// this.condicao = condicao;
-	// 	// // 	// this.entao = entao;
-	// 	// // 	// this.condicao2 = condicao2;
-	// 	// // 	// this.senaose = senaose;
-	// 	// // 	// this.senao = senao;
-	// 	// // }
+	class Se implements Comando {
 		
-	// 	// public Se(List<Bool> condicoes, List<Comando> comandos) {
-	// 	// 	this.condicoes = condicoes;
-	// 	// 	this.comandos = comandos;
-	// 	// }
+		private List<Bool> condicoes = new ArrayList<>();
+		private List<Comando> comandos = new ArrayList<>();
 
+		public Se(List<Bool> condicoes, List<Comando> comandos) {
+			this.condicoes = condicoes;
+			this.comandos = comandos;
+		}
+		
+		@Override
+		public void execute() {
 
-	// 	// @Override
-	// 	// public void execute() {
-
-	// 	// 	if(){
-
-	// 	// 	}
-	// 	// 	// if (condicao.getValor()){
-	// 	// 	// 	entao.execute();
-	// 	// 	// }else if(this.condicao2 != null && condicao2.getValor()){
-	// 	// 	// 	senaose.execute();
-	// 	// 	// }else{
-	// 	// 	// 	if(this.condicao2 != null){
-	// 	// 	// 		senao.execute();
-	// 	// 	// 	}else{
-	// 	// 	// 		senaose.execute();
-	// 	// 	// 	}
-	// 	// 	// }
-	// 	// }
-	// }
-
-
+			if (condicoes.get(0).getValor()){
+				comandos.get(0).execute();
+			}else if(condicoes.size() > 1){
+				for(int i = 1; i < condicoes.size(); i++){
+					if(condicoes.get(i).getValor()){
+						comandos.get(i).execute();
+						return;
+					}
+				}
+				//Se a verificação dos senaose não passar executar o comando naose do final do array comandos
+				comandos.get(comandos.size() - 1).execute();
+			}else{
+				comandos.get(1).execute();
+			}
+		}
+	}
 
 	class Repita implements Comando{
 		private final Expressao exp;
